@@ -80,12 +80,13 @@ function TodoCreate() {
     const nextId = useTodoNextId();
     ////////////기능구현//////////
     //인풋 상태 관리
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState();
     const onChange = (e) => setValue(e.target.value);
-
+    console.log()
     //form 고유의 기능
     const onSubmit = e => {
         e.preventDefault();
+
         dispatch({
             type: 'CREATE',
             todo: {
@@ -94,6 +95,9 @@ function TodoCreate() {
                 done: false,
             }
         });
+
+        // localStorage.setItem('list',value)
+
         setValue('');
         setOpen(false);
         nextId.current += 1;
